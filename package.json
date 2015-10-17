@@ -22,5 +22,8 @@
     "express": "^4.13.3",
     "jade": "^1.11.0",
     "strapping": "^1.2.3"
+  },
+  "devDependencies": {
+    "fs-extra": "^0.24.0"
   }
 }
