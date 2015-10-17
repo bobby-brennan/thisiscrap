@@ -23,6 +23,9 @@ var assetManager = module.exports = new AssetMan({
 });
 
 assetManager.addCSS('home', {files: CORE_CSS.concat(['css/home.css'])});
-assetManager.addJS('home', {files: CORE_JS})
+assetManager.addJS('home', {files: CORE_JS.concat([
+  'js/react/button.js',
+  'js/react/home.js',  
+])})
 
 assetManager.compile();
