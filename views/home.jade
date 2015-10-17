@@ -3,6 +3,8 @@ html
   head
     title This is Crap!
     script(src="https://maps.googleapis.com/maps/api/js?libraries=places")
+    script.
+      var HOST = "#{typeof(host) === 'undefined' ? '' : host}";
     |!{assetManager.renderCSS('home')}
     |!{assetManager.renderJS('home')}
   body

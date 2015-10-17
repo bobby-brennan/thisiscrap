@@ -14,6 +14,7 @@ var CORE_CSS = [
 var assetManager = module.exports = new AssetMan({
   useOriginalAssets: process.env.DEVELOPMENT,
   staticDirectory: __dirname + '/static',
+  basePath: '.',
   js: {
     outputDirectory: 'minified/js',
   },
