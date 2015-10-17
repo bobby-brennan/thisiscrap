@@ -73,11 +73,3 @@ var button = (function (React) {
   };;
   return fn;
 }(typeof React !== "undefined" ? React : require(".//home/ubuntu/git/thisiscrap/node_modules/react/react.js")))
-$(document).ready(function() {
-  var container = document.querySelector('#ReactContainer');
-  React.render(button({
-    clicked: function () {
-      alert('clicked');
-    }
-  }), container);
-});

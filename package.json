@@ -22,7 +22,10 @@
     "express": "^4.13.3",
     "jade": "^1.11.0",
     "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-geosuggest": "^1.11.1",
     "react-jade": "^2.5.0",
+    "reactify": "^1.1.1",
     "strapping": "^1.2.3"
   },
   "devDependencies": {
