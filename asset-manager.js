@@ -5,7 +5,7 @@ var CORE_JS = [
   "bower/bootstrap/dist/js/bootstrap.min.js",
 ]
 var CORE_CSS = [
-  "bower/bootstrap/dist/css/bootstrap.min.css",
+  "css/bootstrap.css",
   "bower/font-awesome/css/font-awesome.min.css",
 ]
 
