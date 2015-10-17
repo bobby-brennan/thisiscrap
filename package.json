@@ -25,6 +25,7 @@
     "react-dom": "^0.14.0",
     "react-geosuggest": "^1.11.1",
     "react-jade": "^2.5.0",
+    "reactfire": "^0.5.1",
     "reactify": "^1.1.1",
     "strapping": "^1.2.3"
   },
