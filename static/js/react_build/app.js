@@ -19339,6 +19339,13 @@ var App = React.createClass({displayName: "App",
   /**
    * Render the example app
    */
+
+  componentDidMount: function() {
+    var el = $(this.getDOMNode());
+    el.find('input').addClass('form-control');
+    console.log('added!')
+  },
+
   render: function() {
     var fixtures = [
       {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
@@ -19347,14 +19354,18 @@ var App = React.createClass({displayName: "App",
     ];
  
     return (
-      React.createElement("div", null, 
-        React.createElement(Geosuggest, {
-          placeholder: "Start typing!", 
-          initialValue: "Hamburg", 
-          fixtures: fixtures, 
-          onSuggestSelect: this.onSuggestSelect, 
-          location: new google.maps.LatLng(53.558572, 9.9278215), 
-          radius: "20"})
+      React.createElement("div", {className: "container"}, 
+        React.createElement("div", {className: "row"}, 
+          React.createElement("div", {className: "col-xs-12 col-md-10 col-md-offset-1"}, 
+            React.createElement(Geosuggest, {
+              placeholder: "Start typing!", 
+              initialValue: "Hamburg", 
+              fixtures: fixtures, 
+              onSuggestSelect: this.onSuggestSelect, 
+              location: new google.maps.LatLng(53.558572, 9.9278215), 
+              radius: "20"})
+          )
+        )
       )
     )
   },

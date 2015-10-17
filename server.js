@@ -10,21 +10,6 @@ App.engine('jade', require('jade').__express);
 App.use(require('compression')());
 App.use(Express.static(__dirname + '/static'));
 
-var recompile = function() {
-  FS.readdirSync(__dirname + '/views/react').forEach(function(file) {
-    var name = file.replace('.jade', '');
-    var tmpl = 'var ' + name + ' = ' + ReactJade.compileFileClient(__dirname + '/views/react/' + file);
-    FS.writeFileSync(__dirname + '/static/js/react/' + name + '.js', tmpl)
-  })
-}
-recompile();
-if (process.env.DEVELOPMENT) {
-  App.use(function(req, res, next) {
-    recompile();
-    next();
-  })
-}
-
 var OPTIONS = {
   basePath: '/strapping',
 }

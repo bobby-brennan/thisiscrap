@@ -6,6 +6,13 @@ var App = React.createClass({
   /**
    * Render the example app
    */
+
+  componentDidMount: function() {
+    var el = $(this.getDOMNode());
+    el.find('input').addClass('form-control');
+    console.log('added!')
+  },
+
   render: function() {
     var fixtures = [
       {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
@@ -14,14 +21,18 @@ var App = React.createClass({
     ];
  
     return (
-      <div>
-        <Geosuggest
-          placeholder="Start typing!"
-          initialValue="Hamburg"
-          fixtures={fixtures}
-          onSuggestSelect={this.onSuggestSelect}
-          location={new google.maps.LatLng(53.558572, 9.9278215)}
-          radius="20" />
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-12 col-md-10 col-md-offset-1">
+            <Geosuggest
+              placeholder="Start typing!"
+              initialValue="Hamburg"
+              fixtures={fixtures}
+              onSuggestSelect={this.onSuggestSelect}
+              location={new google.maps.LatLng(53.558572, 9.9278215)}
+              radius="20" />
+          </div>
+        </div>
       </div>
     )
   },
