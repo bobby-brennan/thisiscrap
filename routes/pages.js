@@ -28,7 +28,8 @@ Router.get('/search', function(req, res) {
 Router.get('/add_review', function(req, res) {
   res.render('add_review', {
     assetManager: AssetManager,
-    review_title: req.query.q,
+    review_location: req.query.q,
+    title_placeholder: "pizza burgers",
   });
 })
 
