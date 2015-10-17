@@ -3,6 +3,8 @@ var AssetMan = require('bb-asset-manager');
 var CORE_JS = [
   "bower/jquery/dist/jquery.min.js",
   "bower/bootstrap/dist/js/bootstrap.min.js",
+  "bower/react/react-with-addons.min.js",
+  "bower/react/react-dom.min.js",
 ]
 var CORE_CSS = [
   "css/bootstrap.css",
