@@ -19374,16 +19374,49 @@ module.exports = require('./lib/React');
 var React = require('react'),
   ReactDOM = require('react-dom'),
   Geosuggest = require('react-geosuggest');
+
+var Review = React.createClass({displayName: "Review",
+  render: function() {
+    return (
+      React.createElement("div", {className: "panel panel-primary"}, 
+        React.createElement("div", {className: "page-header"}, 
+          React.createElement("h1", null, this.props.review.place.name, " ", React.createElement("small", null, this.props.review.place.categories.join(', ')))
+        ), 
+        React.createElement("div", null, "By ", this.props.review.by), 
+        React.createElement("div", {className: "icon"}), 
+        React.createElement("div", null, this.props.review.craps, " craps"), 
+        React.createElement("div", {className: "well"}, this.props.review.text)
+      )
+    )
+  }
+})
+
+var Reviews = React.createClass({displayName: "Reviews",
+  getInitialState: function() {
+    return {reviews: []};
+  },
+  componentDidMount: function() {
+    $.get('/api/reviews', function(reviews) {
+      this.setState({
+        reviews: reviews,
+      })
+    }.bind(this))
+  },
+  render: function() {
+    return (
+      React.createElement("div", null, 
+        this.state.reviews.map(function(review) {
+           return React.createElement(Review, {review: review})
+        })
+      )
+    )
+  },
+})
  
 var App = React.createClass({displayName: "App",
-  /**
-   * Render the example app
-   */
-
   componentDidMount: function() {
     var el = $(this.getDOMNode());
     el.find('input').addClass('form-control');
-    console.log('added!')
   },
 
   render: function() {
@@ -19403,7 +19436,8 @@ var App = React.createClass({displayName: "App",
               fixtures: fixtures, 
               onSuggestSelect: this.onSuggestSelect, 
               location: new google.maps.LatLng(53.558572, 9.9278215), 
-              radius: "20"})
+              radius: "20"}), 
+            React.createElement(Reviews, null)
           )
         )
       )

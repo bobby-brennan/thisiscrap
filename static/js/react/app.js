@@ -5,11 +5,14 @@ var React = require('react'),
 var Review = React.createClass({
   render: function() {
     return (
-      <div>
-        <div>{this.props.review.id}</div>
+      <div className="panel panel-primary">
+        <div className="page-header">
+          <h1>{this.props.review.place.name} <small>{this.props.review.place.categories.join(', ')}</small></h1>
+        </div>
         <div>By {this.props.review.by}</div>
+        <div className="icon"></div>
         <div>{this.props.review.craps} craps</div>
-        <div>{this.props.review.text}</div>
+        <div className="well">{this.props.review.text}</div>
       </div>
     )
   }
@@ -17,11 +20,10 @@ var Review = React.createClass({
 
 var Reviews = React.createClass({
   getInitialState: function() {
-    return {reviews: [{id: 'hi'}]};
+    return {reviews: []};
   },
   componentDidMount: function() {
     $.get('/api/reviews', function(reviews) {
-      console.log('reviews!', reviews);
       this.setState({
         reviews: reviews,
       })
@@ -62,8 +64,6 @@ var App = React.createClass({
               onSuggestSelect={this.onSuggestSelect}
               location={new google.maps.LatLng(53.558572, 9.9278215)}
               radius="20" />
-          </div>
-          <div className="col-xs-12">
             <Reviews />
           </div>
         </div>

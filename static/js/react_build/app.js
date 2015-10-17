@@ -19338,11 +19338,14 @@ var React = require('react'),
 var Review = React.createClass({displayName: "Review",
   render: function() {
     return (
-      React.createElement("div", null, 
-        React.createElement("div", null, this.props.review.id), 
+      React.createElement("div", {className: "panel panel-primary"}, 
+        React.createElement("div", {className: "page-header"}, 
+          React.createElement("h1", null, this.props.review.place.name, " ", React.createElement("small", null, this.props.review.place.categories.join(', ')))
+        ), 
         React.createElement("div", null, "By ", this.props.review.by), 
+        React.createElement("div", {className: "icon"}), 
         React.createElement("div", null, this.props.review.craps, " craps"), 
-        React.createElement("div", null, this.props.review.text)
+        React.createElement("div", {className: "well"}, this.props.review.text)
       )
     )
   }
@@ -19350,11 +19353,10 @@ var Review = React.createClass({displayName: "Review",
 
 var Reviews = React.createClass({displayName: "Reviews",
   getInitialState: function() {
-    return {reviews: [{id: 'hi'}]};
+    return {reviews: []};
   },
   componentDidMount: function() {
     $.get('/api/reviews', function(reviews) {
-      console.log('reviews!', reviews);
       this.setState({
         reviews: reviews,
       })
@@ -19394,9 +19396,7 @@ var App = React.createClass({displayName: "App",
               fixtures: fixtures, 
               onSuggestSelect: this.onSuggestSelect, 
               location: new google.maps.LatLng(53.558572, 9.9278215), 
-              radius: "20"})
-          ), 
-          React.createElement("div", {className: "col-xs-12"}, 
+              radius: "20"}), 
             React.createElement(Reviews, null)
           )
         )
