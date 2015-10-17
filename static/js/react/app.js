@@ -4,6 +4,7 @@ var React = require('react'),
 
 var Review = React.createClass({
   render: function() {
+    console.log('render revinner', this.props.review);
     return (
       <div className="panel panel-primary">
         <div className="page-header">
@@ -30,10 +31,12 @@ var Reviews = React.createClass({
     }.bind(this))
   },
   render: function() {
+    console.log('render reviews');
     return (
       <div>
         {this.state.reviews.map(function(review) {
-           return <Review review={review} />
+           console.log('render rev', review);
+           return (<Review review={review} key={review.id} />)
         })}
       </div>
     )
@@ -42,11 +45,12 @@ var Reviews = React.createClass({
  
 var App = React.createClass({
   componentDidMount: function() {
-    var el = $(this.getDOMNode());
-    el.find('input').addClass('form-control');
+    var el = $('.geosuggest input')
+    el.addClass('form-control');
   },
 
   render: function() {
+    console.log('render app');
     var fixtures = [
       {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
       {label: 'Reeperbahn, Hamburg', location: {lat: 53.5495629, lng: 9.9625838}},

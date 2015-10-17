@@ -19337,6 +19337,7 @@ var React = require('react'),
 
 var Review = React.createClass({displayName: "Review",
   render: function() {
+    console.log('render revinner', this.props.review);
     return (
       React.createElement("div", {className: "panel panel-primary"}, 
         React.createElement("div", {className: "page-header"}, 
@@ -19363,10 +19364,12 @@ var Reviews = React.createClass({displayName: "Reviews",
     }.bind(this))
   },
   render: function() {
+    console.log('render reviews');
     return (
       React.createElement("div", null, 
         this.state.reviews.map(function(review) {
-           return React.createElement(Review, {review: review})
+           console.log('render rev', review);
+           return (React.createElement(Review, {review: review, key: review.id}))
         })
       )
     )
@@ -19375,11 +19378,12 @@ var Reviews = React.createClass({displayName: "Reviews",
  
 var App = React.createClass({displayName: "App",
   componentDidMount: function() {
-    var el = $(this.getDOMNode());
-    el.find('input').addClass('form-control');
+    var el = $('.geosuggest input')
+    el.addClass('form-control');
   },
 
   render: function() {
+    console.log('render app');
     var fixtures = [
       {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
       {label: 'Reeperbahn, Hamburg', location: {lat: 53.5495629, lng: 9.9625838}},
