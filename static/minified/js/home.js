@@ -19406,7 +19406,8 @@ var Reviews = React.createClass({displayName: "Reviews",
     return (
       React.createElement("div", null, 
         this.state.reviews.map(function(review) {
-           return React.createElement(Review, {review: review})
+           console.log('render rev', review);
+           return (React.createElement(Review, {review: review, key: review.id}))
         })
       )
     )
@@ -19414,28 +19415,35 @@ var Reviews = React.createClass({displayName: "Reviews",
 })
  
 var App = React.createClass({displayName: "App",
+  getInitialState: function() {
+    return {
+      location: new google.maps.LatLng(53.558572, 9.9278215),
+    }
+  },
+
   componentDidMount: function() {
-    var el = $(this.getDOMNode());
-    el.find('input').addClass('form-control');
+    var el = $('.geosuggest input')
+    el.addClass('form-control');
+    var self = this;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        self.setState({
+          location: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+        });
+        console.log('state', self.state);
+      })
+    }
   },
 
   render: function() {
-    var fixtures = [
-      {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
-      {label: 'Reeperbahn, Hamburg', location: {lat: 53.5495629, lng: 9.9625838}},
-      {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
-    ];
- 
     return (
       React.createElement("div", {className: "container"}, 
         React.createElement("div", {className: "row"}, 
-          React.createElement("div", {className: "col-xs-12 col-md-10 col-md-offset-1"}, 
+          React.createElement("div", {className: "col-xs-12"}, 
             React.createElement(Geosuggest, {
-              placeholder: "Start typing!", 
-              initialValue: "Hamburg", 
-              fixtures: fixtures, 
+              placeholder: "Search for places to crap on...", 
               onSuggestSelect: this.onSuggestSelect, 
-              location: new google.maps.LatLng(53.558572, 9.9278215), 
+              location: this.state.location, 
               radius: "20"}), 
             React.createElement(Reviews, null)
           )
