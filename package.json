@@ -21,6 +21,11 @@
     "compression": "^1.6.0",
     "express": "^4.13.3",
     "jade": "^1.11.0",
+    "react": "^0.14.0",
+    "react-jade": "^2.5.0",
     "strapping": "^1.2.3"
+  },
+  "devDependencies": {
+    "fs-extra": "^0.24.0"
   }
 }

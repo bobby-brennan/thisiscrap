@@ -3,6 +3,8 @@ var AssetMan = require('bb-asset-manager');
 var CORE_JS = [
   "bower/jquery/dist/jquery.min.js",
   "bower/bootstrap/dist/js/bootstrap.min.js",
+  "bower/react/react-with-addons.min.js",
+  "bower/react/react-dom.min.js",
 ]
 var CORE_CSS = [
   "css/bootstrap.css",
@@ -22,6 +24,9 @@ var assetManager = module.exports = new AssetMan({
 
 assetManager.addCSS('add_review', {files: CORE_CSS.concat(['css/add_review.css'])});
 assetManager.addCSS('home', {files: CORE_CSS.concat(['css/home.css'])});
-assetManager.addJS('home', {files: CORE_JS})
+assetManager.addJS('home', {files: CORE_JS.concat([
+  'js/react/button.js',
+  'js/react/home.js',  
+])})
 
 assetManager.compile();
