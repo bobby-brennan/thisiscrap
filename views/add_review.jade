@@ -1,0 +1,30 @@
+html
+  head
+    | !{assetManager.renderCSS('add_review')}
+  body
+    .container
+      .row
+        .col-md-2
+        .col-md-8
+          input(type="text", value=review_title,style="width:100%")
+        .col-md-2
+      .row
+        .col-md-4
+          div.minus
+            span LESS
+        .col-md-4
+          div.poop
+            span POOP
+        .col-md-4
+          div.add
+            span MORE 
+      .row
+        .col-md-2
+        .col-md-8
+          input(type="text",placeholder="Talk some shit...",style="width:100%")
+        .col-md-2
+      .row
+        .col-md-4
+        .col-md-4
+          .btn.btn-primary SUBMIT
+        .col-md-4

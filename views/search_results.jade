@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    | !{assetManager.renderCSS('home')}
+  body
+    .nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand
+            img(alt="Brand",src="...")
+    .container
+      .row
+        .col-md-2
+        .col-md-8
+          include ./searchbox.jade
+        .col-md-2
+      .row
+        .col-md-2
+        .col-md-8
+          .btn.btn-primary ADD REVIEW
+        .col-md-2
+      .row
+        .col-md-2
+        .col-md-8
+          .panel
+            if no_reviews
+              p No one gives a shit yet!
+            else
+              for review in reviews
+                include ./review.jade
+        .col-md-2
+
