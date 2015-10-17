@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/bobby-brennan/thisiscrap/issues"
   },
-  "homepage": "https://github.com/bobby-brennan/thisiscrap#readme"
+  "homepage": "https://github.com/bobby-brennan/thisiscrap#readme",
+  "dependencies": {
+    "bb-asset-manager": "^1.2.0",
+    "compression": "^1.6.0",
+    "express": "^4.13.3",
+    "jade": "^1.11.0"
+  }
 }
