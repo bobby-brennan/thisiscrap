@@ -1,0 +1,19 @@
+{
+  "name": "thisiscrap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobby-brennan/thisiscrap.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bobby-brennan/thisiscrap/issues"
+  },
+  "homepage": "https://github.com/bobby-brennan/thisiscrap#readme"
+}
