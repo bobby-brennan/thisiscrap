@@ -33,7 +33,8 @@ var Reviews = React.createClass({
     return (
       <div>
         {this.state.reviews.map(function(review) {
-           return <Review review={review} />
+           console.log('render rev', review);
+           return (<Review review={review} key={review.id} />)
         })}
       </div>
     )
@@ -41,28 +42,35 @@ var Reviews = React.createClass({
 })
  
 var App = React.createClass({
+  getInitialState: function() {
+    return {
+      location: new google.maps.LatLng(53.558572, 9.9278215),
+    }
+  },
+
   componentDidMount: function() {
-    var el = $(this.getDOMNode());
-    el.find('input').addClass('form-control');
+    var el = $('.geosuggest input')
+    el.addClass('form-control');
+    var self = this;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        self.setState({
+          location: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+        });
+        console.log('state', self.state);
+      })
+    }
   },
 
   render: function() {
-    var fixtures = [
-      {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
-      {label: 'Reeperbahn, Hamburg', location: {lat: 53.5495629, lng: 9.9625838}},
-      {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
-    ];
- 
     return (
       <div className="container">
         <div className="row">
-          <div className="col-xs-12 col-md-10 col-md-offset-1">
+          <div className="col-xs-12">
             <Geosuggest
-              placeholder="Start typing!"
-              initialValue="Hamburg"
-              fixtures={fixtures}
+              placeholder="Search for places to crap on..."
               onSuggestSelect={this.onSuggestSelect}
-              location={new google.maps.LatLng(53.558572, 9.9278215)}
+              location={this.state.location}
               radius="20" />
             <Reviews />
           </div>
