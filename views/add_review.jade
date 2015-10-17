@@ -2,11 +2,14 @@ html
   head
     | !{assetManager.renderCSS('add_review')}
   body
+    include ./navbar.jade
     .container
       .row
         .col-md-2
         .col-md-8
-          input(type="text", value=review_title,style="width:100%")
+          .input-group
+            span.input-group-addon#basic_addon= review_location
+            input(type="text", placeholder=title_placeholder,style="width:100%",aria-describedby="basic_addon")
         .col-md-2
       .row
         .col-md-4

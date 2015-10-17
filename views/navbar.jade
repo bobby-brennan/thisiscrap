@@ -1,0 +1,12 @@
+.nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      a.navbar-brand
+        img(alt="Brand",src="/brand.png")
+    ul.nav.navbar-nav.navbar-right
+      li
+        if logged_in
+          a(href="#") Sign Out
+        else
+          a(href="#") Sign In 
+ 
