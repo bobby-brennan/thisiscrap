@@ -4,15 +4,19 @@ var React = require('react'),
 
 var Review = React.createClass({
   render: function() {
+    var craps = [];
+    for (i = 0; i < this.props.review.craps; ++i) {
+      craps.push(i)
+    }
     return (
-      <div className="panel panel-primary">
-        <div className="page-header">
-          <h1>{this.props.review.place.name} <small>{this.props.review.place.categories.join(', ')}</small></h1>
-        </div>
+      <div>
+        <h3>{this.props.review.place.name} <small>{this.props.review.place.categories.join(', ')}</small></h3>
         <div>By {this.props.review.by}</div>
         <div className="icon"></div>
-        <div>{this.props.review.craps} craps</div>
-        <div className="well">{this.props.review.text}</div>
+        <div>{craps.map(function(idx) {
+          return <img className="crap-image" src='images/brand.png' key={idx}></img>
+        })}</div>
+        <p>{this.props.review.text}</p>
       </div>
     )
   }

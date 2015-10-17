@@ -1,3 +1,7 @@
+img.crap-image {
+  max-width: 30px;
+}
+
 .geosuggest ul {
   list-style: none;
 }

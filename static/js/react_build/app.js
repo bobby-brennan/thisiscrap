@@ -19337,15 +19337,19 @@ var React = require('react'),
 
 var Review = React.createClass({displayName: "Review",
   render: function() {
+    var craps = [];
+    for (i = 0; i < this.props.review.craps; ++i) {
+      craps.push(i)
+    }
     return (
-      React.createElement("div", {className: "panel panel-primary"}, 
-        React.createElement("div", {className: "page-header"}, 
-          React.createElement("h1", null, this.props.review.place.name, " ", React.createElement("small", null, this.props.review.place.categories.join(', ')))
-        ), 
+      React.createElement("div", null, 
+        React.createElement("h3", null, this.props.review.place.name, " ", React.createElement("small", null, this.props.review.place.categories.join(', '))), 
         React.createElement("div", null, "By ", this.props.review.by), 
         React.createElement("div", {className: "icon"}), 
-        React.createElement("div", null, this.props.review.craps, " craps"), 
-        React.createElement("div", {className: "well"}, this.props.review.text)
+        React.createElement("div", null, craps.map(function(idx) {
+          return React.createElement("img", {className: "crap-image", src: "images/brand.png", key: idx})
+        })), 
+        React.createElement("p", null, this.props.review.text)
       )
     )
   }
