@@ -1,16 +1,47 @@
 var React = require('react'),
   ReactDOM = require('react-dom'),
   Geosuggest = require('react-geosuggest');
+
+var Review = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <div>{this.props.review.id}</div>
+        <div>By {this.props.review.by}</div>
+        <div>{this.props.review.craps} craps</div>
+        <div>{this.props.review.text}</div>
+      </div>
+    )
+  }
+})
+
+var Reviews = React.createClass({
+  getInitialState: function() {
+    return {reviews: [{id: 'hi'}]};
+  },
+  componentDidMount: function() {
+    $.get('/api/reviews', function(reviews) {
+      console.log('reviews!', reviews);
+      this.setState({
+        reviews: reviews,
+      })
+    }.bind(this))
+  },
+  render: function() {
+    return (
+      <div>
+        {this.state.reviews.map(function(review) {
+           return <Review review={review} />
+        })}
+      </div>
+    )
+  },
+})
  
 var App = React.createClass({
-  /**
-   * Render the example app
-   */
-
   componentDidMount: function() {
     var el = $(this.getDOMNode());
     el.find('input').addClass('form-control');
-    console.log('added!')
   },
 
   render: function() {
@@ -31,6 +62,9 @@ var App = React.createClass({
               onSuggestSelect={this.onSuggestSelect}
               location={new google.maps.LatLng(53.558572, 9.9278215)}
               radius="20" />
+          </div>
+          <div className="col-xs-12">
+            <Reviews />
           </div>
         </div>
       </div>
