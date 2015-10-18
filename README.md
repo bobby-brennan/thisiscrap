@@ -12,6 +12,13 @@ node server.js
 ```
 
 ## PhoneGap
+The PhoneGap app is stored at:
+https://github.com/bobby-brennan/thisiscrap-app.git
+
+You can build the PhoneGap app by running node scripts/build-phonegap.js
+
+
+
 
 ## Strapping!
 You can edit the Bootstrap configuration for ThisIsCrap by visiting localhost:3000/strapping/editor
