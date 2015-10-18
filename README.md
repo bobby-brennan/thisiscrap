@@ -15,7 +15,10 @@ node server.js
 The PhoneGap app is stored at:
 https://github.com/bobby-brennan/thisiscrap-app.git
 
-You can build the PhoneGap app by running node scripts/build-phonegap.js
+You can build the PhoneGap in the directory `../thisiscrap-app` by running
+```
+node scripts/build-phonegap.js
+```
 
 
 
